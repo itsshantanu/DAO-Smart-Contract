@@ -7,7 +7,7 @@ import "@openzeppelin/contracts/token/ERC20/extensions/ERC20Votes.sol";
 contract MoonToken is ERC20, ERC20Votes {
 
     constructor(uint256 initialSupply) ERC20("MoonToken", "MOON") ERC20Permit("MoonToken") {
-        _mint(msg.sender, initialSupply * 10 ** 18);
+        _mint(msg.sender, initialSupply);
     }
 
     function _afterTokenTransfer(address from, address to, uint256 amount) internal override(ERC20, ERC20Votes){

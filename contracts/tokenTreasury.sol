@@ -8,14 +8,14 @@ contract tokenTreasury is Ownable {
     address public sendTo;
     bool public isReleased;
 
-    constructor(address _sendTo) payable {
+    constructor(address executorAddress) payable {
         fundsAvailable = msg.value;
-        sendTo = _sendTo;
+        sendTo = executorAddress;
         isReleased = false;
     }
 
-    function releaseFunds() public onlyOwner {
+    function releaseFunds(address proposerAddress) public onlyOwner {
         isReleased = true;
-        payable(sendTo).transfer(fundsAvailable);
+        payable(proposerAddress).transfer(fundsAvailable);
     }
 }

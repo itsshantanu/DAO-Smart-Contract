@@ -9,14 +9,14 @@ async function main() {
   // For Deploying Token Deploy
 
   const MoonToken = await hre.ethers.getContractFactory('MoonToken');
-  const initialSupply = BigNumber.from(1000);
+  const initialSupply = ethers.utils.parseEther("1000.0");
   const moonToken = await MoonToken.deploy(initialSupply);
 
   await moonToken.deployed();  
 
   console.log('moonToken deployed to:', moonToken.address);
 
-  const amount = BigNumber.from(50);
+  const amount = ethers.utils.parseEther("50.0");
   await moonToken.transfer(voter1.address, amount, { from:executor.address});
   await moonToken.transfer(voter2.address, amount, { from:executor.address});
   await moonToken.transfer(voter3.address, amount, { from:executor.address});
@@ -49,7 +49,7 @@ async function main() {
 
   // For Deploying Treasury
 
-  const funds = BigNumber.from(25);
+  const funds = ethers.utils.parseEther("25.0");
 
   const TokenTreasury = await hre.ethers.getContractFactory('tokenTreasury'); 
   const tokenTreasury = await TokenTreasury.deploy(executor.address, { value: funds });

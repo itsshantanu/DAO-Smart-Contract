@@ -29,7 +29,7 @@ async function main() {
     isReleased = await tokenTreasury.isReleased();  // checking fund release status
     console.log(`Has funds released? ${isReleased}`);
 
-    totalFunds = await provider.getBalance(tokenTreasuryAddress); // checking total funds
+    totalFunds = await tokenTreasury.getBalance(); // checking total funds
     console.log(`Total funds inside treasury: ${ethers.utils.formatEther(totalFunds)} ETH\n`);
 
     const governanceAddress = "0xa513E6E4b8f2a923D98304ec87F64353C4D5C853";
@@ -120,7 +120,7 @@ async function main() {
     isReleased = await tokenTreasury.isReleased(); // Checking fund release status
     console.log(`Has funds released? ${isReleased}`);
 
-    totalFunds = await provider.getBalance(tokenTreasuryAddress); // Checking total funds
+    totalFunds = await tokenTreasury.getBalance(); // Checking total funds
     console.log(`Total funds inside treasury: ${ethers.utils.formatEther(totalFunds)} ETH\n`);
 
 }

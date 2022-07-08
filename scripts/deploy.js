@@ -1,5 +1,4 @@
 const hre = require('hardhat');
-const { BigNumber } = require('ethers');
 const { ethers } = require('hardhat');
 
 async function main() {

@@ -93,7 +93,7 @@ async function main() {
 
     // Queuing 
     
-    // Creating proposal by fetching the tokenTreasury function inside governance function
+    // Queuing proposal by fetching the tokenTreasury function inside governance function
     await governance.queue([tokenTreasuryAddress],[0],[
         tokenTreasury.interface.encodeFunctionData('releaseFunds', [proposer.address]),
       ],
@@ -105,7 +105,7 @@ async function main() {
     
     // Executing
     
-    // Creating proposal by fetching the tokenTreasury function inside governance function
+    // Executing proposal by fetching the tokenTreasury function inside governance function
     const executePropose = await governance.execute([tokenTreasuryAddress],[0],[
         tokenTreasury.interface.encodeFunctionData('releaseFunds', [proposer.address]),
       ],

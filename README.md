@@ -12,20 +12,103 @@ A DAO, or “Decentralized Autonomous Organization,” is a community-led entity
 
 ## How Contracts work together:-
 
-# Initial Deployment :-
+### Initial Deployment :-
 
 1. We deploy the MoonToken first and set the initial supply token supply and transfer tokens to voters for voting.
 
 2. We delegate the voters for voting.
 
-3. Then we deploy the treasuryTimelock and Governance contract.
+3. Define timeDelay, quorum, votingDelay, votingPeriod.
 
-4. Then we deploy Treasury and tranfer it's ownership to TreasuryTimelock.
+4. Then we deploy the treasuryTimelock and Governance contract by passing the above apropriate defined parameters.
 
-5. Assign Proposer and Executor role using treasuryTimelock.
+5. Then we deploy Treasury and tranfer it's ownership to TreasuryTimelock.
 
-# Now as we have completed all the intial deployment we can start with the proposal process :-
+6. Assign Proposer and Executor role using treasuryTimelock.
 
-1. Create a proposal using governance contract function propose while using interface.encodeFunctionData inside it for calling releaseFund function from tokenTreasury contract. encodeFunctionData encodes the function so that another function can read it and implement it.
+### Now as we have completed all the intial deployment we can start with the proposal process :-
 
-2. 
+1. Create a proposal using governance contract function propose while using interface.encodeFunctionData inside it for calling releaseFund function from tokenTreasury contract. encodeFunctionData encodes the function so that another function can read it and implement it. ProposalID is created in response to this and proposalState is changed to Active.
+
+2. Take the snapshot of the proposal using governance.proposalSnapshot while passing the proposalID as a paramenter.
+
+3. Set the proposal deadline using governance.proposalDeadline while passing the proposalID as a parameter.
+
+4. Voting is started and votes are casted for each voter using governance.castVote while passing the value of vote in which 0 = Against, 1 = For, 2 =  Abstain.
+
+5. Votes are counted we can access all the votes using governance.proposalVotes passing proposalID as parameter. If proposal is passed then proposalStatus changes to Succeeded else to Defeated. 
+
+6. Then queue the Succeeded proposal by governance contract function governance.queue while using interface.encodeFunctionData inside it for calling releaseFund function from tokenTreasury contract and also a hash string is passed. proposalState is changed to Queued.
+
+7. Then execute the Queued proposal by governance contract function governance.execute while using interface.encodeFunctionData inside it for calling releaseFund function from tokenTreasury contract and also a hash string is passed to match the hash as passed during queuing. proposalState is changed to Executed.
+
+8. If every thing goes well the funds are released from tokenTreasury and transfered to the proposer. And totalFunds are updated.
+
+For detailed infromation one can refer to : -
+
+- [Openzeppelin Governance Docs](https://docs.openzeppelin.com/contracts/4.x/api/governance)
+
+## Environment Variables
+
+To run this project, you will need to add the following environment variables to your .env file
+
+```
+    ROPSTEN_API_URL = "https://ropsten.infura.io/v3/YOUR_API_KEY"
+    PRIVATE_KEY = "YOUR-METAMASK-PRIVATE_KEY"
+```
+
+## NPM Packages:
+
+ - [Openzeppelin](https://docs.openzeppelin.com/)
+ - [Hardhat Ethers](https://www.npmjs.com/package/hardhat-ethers)
+ - [Chai](https://www.npmjs.com/package/chai)
+ - [Ethers](https://www.npmjs.com/package/ethers)
+ - [ethereum-waffle](https://www.npmjs.com/package/ethereum-waffle)
+ - [dotenv](https://www.npmjs.com/package/dotenv)
+
+## Tech Stack:
+ - [Node](https://nodejs.org/en/)
+ - [Hardhat](https://hardhat.org/tutorial/)
+ - [Solidity](https://docs.soliditylang.org/en/v0.8.13)
+
+
+## Run Locally:
+
+Clone the github repo:
+```
+https://github.com/itsshantanu/Linear-Token-Vesting
+```
+
+Install Node Modules
+```
+npm install
+```
+
+Compile
+```
+npx hardhat compile
+```
+
+Test
+```
+npx hardhat test
+```
+
+Deploy on Localhost
+```
+npx hardhat node
+npx hardhat run scripts/deploy.js --network localhost
+```
+
+Deploy on Ropsten
+```
+npx hardhat run scripts/deploy.js --network ropsten
+```
+
+Help
+```
+npx hardhat help
+```
+
+## Check at Ropsten Test Net:
+ - [MoonToken](https://ropsten.etherscan.io/address/0x207473B9aB3A404FA71F510A64F85Aeb51cd99BD)

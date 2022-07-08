@@ -297,8 +297,8 @@ describe("Governance Contract", function () {
 
     await governance.connect(voter1).castVote(prop_Id, 1);
     await governance.connect(voter2).castVote(prop_Id, 0);
-    await governance.connect(voter3).castVote(prop_Id, 2);
-    await governance.connect(voter4).castVote(prop_Id, 2);
+    await governance.connect(voter3).castVote(prop_Id, 0);
+    await governance.connect(voter4).castVote(prop_Id, 0);
     await governance.connect(voter5).castVote(prop_Id, 2);
 
     const amount = ethers.utils.parseEther("5");

@@ -48,6 +48,19 @@ For detailed infromation one can refer to : -
 
 - [Openzeppelin Governance Docs](https://docs.openzeppelin.com/contracts/4.x/api/governance)
 
+#### Stages
+
+| Sr No | Stages      |
+| :---- | :---------- |
+| `0`   | `Pending`   |
+| `1`   | `Active`    |
+| `2`   | `Cancelled` |
+| `3`   | `Defeated`  |
+| `4`   | `Succeeded` |
+| `5`   | `Queued`    |
+| `6`   | `Expired`   |
+| `7`   | `Executed`  |
+
 ## Environment Variables
 
 To run this project, you will need to add the following environment variables to your .env file

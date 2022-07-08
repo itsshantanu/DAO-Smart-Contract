@@ -89,7 +89,7 @@ To run this project, you will need to add the following environment variables to
 
 Clone the github repo:
 ```
-https://github.com/itsshantanu/Linear-Token-Vesting
+https://github.com/itsshantanu/DAO-Smart-Contract
 ```
 
 Install Node Modules
@@ -111,6 +111,12 @@ Deploy on Localhost
 ```
 npx hardhat node
 npx hardhat run scripts/deploy.js --network localhost
+```
+
+Create Proposal on Localhost
+```
+npx hardhat node
+npx hardhat run scripts/create-proposal.js --network localhost
 ```
 
 Deploy on Ropsten

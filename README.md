@@ -12,7 +12,9 @@ A DAO, or “Decentralized Autonomous Organization,” is a community-led entity
 
 ## How Contracts work together:-
 
-1. We deploy the MoonToken first and set the initial supply token supply and transfer funds to voters.
+# Initial Deployment :-
+
+1. We deploy the MoonToken first and set the initial supply token supply and transfer tokens to voters for voting.
 
 2. We delegate the voters for voting.
 
@@ -22,7 +24,7 @@ A DAO, or “Decentralized Autonomous Organization,” is a community-led entity
 
 5. Assign Proposer and Executor role using treasuryTimelock.
 
-Now as we have completed all the intial deployment we can start with the proposal process :-
+# Now as we have completed all the intial deployment we can start with the proposal process :-
 
 1. Create a proposal using governance contract function propose while using interface.encodeFunctionData inside it for calling releaseFund function from tokenTreasury contract. encodeFunctionData encodes the function so that another function can read it and implement it.
 

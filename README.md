@@ -26,6 +26,8 @@ A DAO, or “Decentralized Autonomous Organization,” is a community-led entity
 
 6. Assign Proposer and Executor role using treasuryTimelock.
 
+Note - Some minor changes are need to be made to deploy the contracts on ropsten test network or mainnet.
+
 ### Now as we have completed all the intial deployment we can start with the proposal process :-
 
 1. Create a proposal using governance contract function propose while using interface.encodeFunctionData inside it for calling releaseFund function from tokenTreasury contract. encodeFunctionData encodes the function so that another function can read it and implement it. ProposalID is created in response to this and proposalState is changed to Active.

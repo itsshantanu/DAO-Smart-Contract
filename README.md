@@ -48,9 +48,9 @@ For detailed infromation one can refer to : -
 
 - [Openzeppelin Governance Docs](https://docs.openzeppelin.com/contracts/4.x/api/governance)
 
-#### Stages
+#### Stages of proposal :-
 
-| Sr No | Stages      |
+| Sr.No.| Stages      |
 | :---- | :---------- |
 | `0`   | `Pending`   |
 | `1`   | `Active`    |
